@@ -1,8 +1,8 @@
-class ZMain {
+class Test {
     public static void main(String[] args) {
         Encapsulation en = new Encapsulation();
         System.out.println(en.getEmp_id());
-        en.setEmp_id("PT-4500/22");
+        en.setEmp_id("PT345656");
         System.out.println(en.getEmp_id());
 
         System.out.println();
