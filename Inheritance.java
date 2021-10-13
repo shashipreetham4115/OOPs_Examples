@@ -27,3 +27,10 @@ public class Inheritance extends Parent {
         System.out.println("Hp Elite");
     }
 }
+
+// why we use inheritance?
+
+// Instead of re writing code which is already writtien we can inherit a class
+// to access all properties what we want...
+// Disadvantages: if we need to remove any method we need to to through all
+// classes which are inheriting this it is so complex...

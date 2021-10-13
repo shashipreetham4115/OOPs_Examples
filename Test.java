@@ -23,10 +23,17 @@ class Test {
 
         System.out.println();
 
-        Abstraction ab = new Abstraction();
-        ab.start();
-        ab.ChangeGear();
-        ab.stop();
+        Abstraction car = new Car();
+        car.start();
+        car.stop();
+        System.out.println("No of Wheels : " + car.getNoofWheels());
+
+        System.out.println();
+
+        Abstraction bike = new Bike();
+        bike.start();
+        bike.stop();
+        System.out.println("No of Wheels : " + bike.getNoofWheels());
 
     }
 }
