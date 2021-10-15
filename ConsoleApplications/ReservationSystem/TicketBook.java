@@ -190,12 +190,12 @@ public class TicketBook extends ReusedMethods implements BookingServices {
             System.out.println("No details of passengers");
             return;
         }
-        System.out.println("\n----------------------------------------------------------");
-        System.out.println("Ticket_ID     Name                     Age    Status/Birth");
-        System.out.println("----------------------------------------------------------");
+        System.out.println("\n-------------------------------------------------------------");
+        System.out.println("Ticket_ID           Name                     Age    Status/Birth");
+        System.out.println("-------------------------------------------------------------");
         for (Passenger p : passenger_details.values()) {
             System.out.println(
-                    " " + p.p_id + "            " + p.p_name + "                   " + p.p_age + "      " + p.p_birth);
+                    " " + p.p_id + "      " + p.p_name + "                   " + p.p_age + "      " + p.p_birth);
         }
     }
 }
