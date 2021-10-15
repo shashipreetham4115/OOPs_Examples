@@ -27,7 +27,7 @@ public class Test {
                 System.out.println("\nPlease Choose Your Choice");
                 System.out.println("1. Book Ticket");
                 System.out.println("2. Cancel Ticket");
-                System.out.println("3. Print Your Ticket");
+                System.out.println("3. Print Ticket");
                 System.out.println("4. Passenger List");
                 System.out.println("5. Add New User");
                 System.out.println("6. Change Password");
