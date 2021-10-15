@@ -54,7 +54,7 @@ public class DB {
         }
     }
 
-    public String getFullName(int id) {
-        return fullname.get(id);
+    public void greetUser(int id) {
+        System.out.println("\nWelcome " + fullname.get(id));
     }
 }

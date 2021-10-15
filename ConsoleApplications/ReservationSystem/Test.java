@@ -18,7 +18,7 @@ public class Test {
                 user_id = val.ValidateUser(username, password);
                 if (user_id > -1) {
                     isValid = true;
-                    System.out.println("\nWelcome " + val.getFullName(user_id));
+                    val.greetUser(user_id);
                 } else
                     System.out.println("\nInvalid username or password");
             }
