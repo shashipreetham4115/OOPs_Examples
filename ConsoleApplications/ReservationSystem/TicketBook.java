@@ -30,7 +30,7 @@ public class TicketBook extends ReusedMethods implements BookingServices {
     public void bookTicket(String name, int age) {
 
         // First it creates a new Passenger Object
-        Passenger p = new Passenger(totalNoofTickets, name, age, "", "");
+        Passenger p = new Passenger(name, age, "", "");
 
         // Then it Checks Wheather the Tickets are available.
         if (available_tickets > 0) {
@@ -41,7 +41,7 @@ public class TicketBook extends ReusedMethods implements BookingServices {
             // Then here it add the passengers to passenger_details map with a ticket_id as
             // a key.
             // where ticket_id is total noof tickets available
-            passenger_details.put(totalNoofTickets, p);
+            passenger_details.put(p.p_id, p);
 
             // Here iam assumming there are 10 seats in a compartment
             if (seating > 10) {
@@ -73,11 +73,11 @@ public class TicketBook extends ReusedMethods implements BookingServices {
             // Then here it add the passengers to passenger_details map with a ticket_id as
             // a key.
             // where ticket_id is total noof tickets available
-            passenger_details.put(totalNoofTickets, p);
+            passenger_details.put(p.p_id, p);
 
             // for every passengers in rac it maintains a queue so here iam adding every rac
             // passenger to rac queue
-            rac_waiting_list.add(totalNoofTickets);
+            rac_waiting_list.add(p.p_id);
             rac_tickets--;
 
             // here if there are no tickets then it adds in a waiting_list
@@ -89,11 +89,11 @@ public class TicketBook extends ReusedMethods implements BookingServices {
             // Then here it add the passengers to passenger_details map with a ticket_id as
             // a key.
             // where ticket_id is total noof tickets available
-            passenger_details.put(totalNoofTickets, p);
+            passenger_details.put(p.p_id, p);
 
             // for every passengers in waiting list it maintains a queue so here iam adding
             // every wl passenger to waiting list queue
-            waiting_list.add(totalNoofTickets);
+            waiting_list.add(p.p_id);
             waiting_tickets--;
         }
         totalNoofTickets--;
@@ -102,7 +102,7 @@ public class TicketBook extends ReusedMethods implements BookingServices {
     }
 
     // this is method used for canceling Tickets
-    public void cancelTicket(int id) {
+    public void cancelTicket(long id) {
 
         // First it checks wheather ticket is booked or not with given ticket id.
         if (passenger_details.containsKey(id)) {
@@ -115,7 +115,7 @@ public class TicketBook extends ReusedMethods implements BookingServices {
 
                     // if yes it gives the canceled ticket to rac
                     String rac_birth = passenger_details.get(id).p_birth;
-                    int rac_id = rac_waiting_list.poll();
+                    long rac_id = rac_waiting_list.poll();
 
                     // and then it changes the birth of passenger to general from rac
                     Passenger racP = passenger_details.get(rac_id);
@@ -173,7 +173,7 @@ public class TicketBook extends ReusedMethods implements BookingServices {
     }
 
     // This method is for printing a particular ticket.
-    public void printTicket(int id) {
+    public void printTicket(long id) {
 
         // here it checks wheather the given id is booked a ticket if yes it print the
         // passenger details else prints an error
@@ -190,8 +190,12 @@ public class TicketBook extends ReusedMethods implements BookingServices {
             System.out.println("No details of passengers");
             return;
         }
+        System.out.println("\n----------------------------------------------------------");
+        System.out.println("Ticket_ID     Name                     Age    Status/Birth");
+        System.out.println("----------------------------------------------------------");
         for (Passenger p : passenger_details.values()) {
-            print(p);
+            System.out.println(
+                    " " + p.p_id + "            " + p.p_name + "                   " + p.p_age + "      " + p.p_birth);
         }
     }
 }

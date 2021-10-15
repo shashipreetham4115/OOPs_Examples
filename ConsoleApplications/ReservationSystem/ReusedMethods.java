@@ -4,10 +4,10 @@ import java.util.*;
 
 public class ReusedMethods {
 
-    Queue<Integer> rac_waiting_list = new LinkedList<Integer>();
-    Queue<Integer> waiting_list = new LinkedList<Integer>();
+    Queue<Long> rac_waiting_list = new LinkedList<Long>();
+    Queue<Long> waiting_list = new LinkedList<Long>();
 
-    Map<Integer, Passenger> passenger_details = new HashMap<Integer, Passenger>();
+    Map<Long, Passenger> passenger_details = new HashMap<Long, Passenger>();
 
     public void print(Passenger p) {
         System.out.println("--------------------------\n");
@@ -20,7 +20,7 @@ public class ReusedMethods {
 
     public void MakeBirthCorrections(String qn) {
         int j = 1;
-        for (Integer i : qn.equals("RAC") ? rac_waiting_list : waiting_list) {
+        for (Long i : qn.equals("RAC") ? rac_waiting_list : waiting_list) {
             passenger_details.get(i).p_birth = qn + "/" + j;
             passenger_details.get(i).p_status = qn;
             j++;

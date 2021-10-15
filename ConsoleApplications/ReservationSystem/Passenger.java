@@ -1,14 +1,17 @@
 package ConsoleApplications.ReservationSystem;
 
+import java.util.Date;
+
 public class Passenger {
-    int p_id;
+    long p_id;
     String p_name;
     int p_age;
     String p_birth;
     String p_status;
+    Date d = new Date();
 
-    Passenger(int id, String name, int age, String birth, String status) {
-        p_id = id;
+    Passenger(String name, int age, String birth, String status) {
+        p_id = d.getTime();
         p_name = name;
         p_age = age;
         p_birth = birth;
