@@ -1,10 +1,10 @@
 public interface Abstraction {
+
     abstract void start();
 
     abstract void stop();
 
     abstract int getNoofWheels();
-
 }
 
 class Bike implements Abstraction {
