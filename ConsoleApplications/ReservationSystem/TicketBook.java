@@ -1,7 +1,5 @@
 package ConsoleApplications.ReservationSystem;
 
-import java.util.*;
-
 public class TicketBook extends ReusedMethods implements BookingServices {
     static int available_tickets = 0;
     static int rac_tickets = 0;
@@ -28,21 +26,33 @@ public class TicketBook extends ReusedMethods implements BookingServices {
     int no_of_rac_passengers = 1;
     int no_of_wl_passengers = 1;
 
-    Queue<Integer> rac_waiting_list = new LinkedList<Integer>();
-    Queue<Integer> waiting_list = new LinkedList<Integer>();
-
-    Map<Integer, Passenger> passenger_details = new HashMap<Integer, Passenger>();
-
+    // This is book ticket method.
     public void bookTicket(String name, int age) {
-        Passenger p = new Passenger(totalNoofTickets, name, age, "");
+
+        // First it creates a new Passenger Object
+        Passenger p = new Passenger(totalNoofTickets, name, age, "", "");
+
+        // Then it Checks Wheather the Tickets are available.
         if (available_tickets > 0) {
+            // Here it creates a birth like which compartment and seat number and middle or
+            // upper or lower.
             p.p_birth = "S" + compartment + "/" + seating + "/" + seat_birth;
+            p.p_status = "SL";
+            // Then here it add the passengers to passenger_details map with a ticket_id as
+            // a key.
+            // where ticket_id is total noof tickets available
             passenger_details.put(totalNoofTickets, p);
+
+            // Here iam assumming there are 10 seats in a compartment
             if (seating > 10) {
+
+                // so when ever seating reaches 10 then iam going to change compartment
                 compartment++;
                 seat_birth = "L";
                 seating = 1;
             } else {
+
+                // for every ticket iam increasing seat number and change birth
                 seating++;
                 if (seat_birth.equals("L"))
                     seat_birth = "M";
@@ -52,14 +62,37 @@ public class TicketBook extends ReusedMethods implements BookingServices {
                     seat_birth = "L";
             }
             available_tickets--;
+
+            // Here if there are no available tickets then it checks wheather there are
+            // rac_tickets.
         } else if (rac_tickets > 0) {
+            // here it create a status of the ticket along with waiting list number.
             p.p_birth = "RAC" + "/" + no_of_rac_passengers++;
+            p.p_status = "RAC";
+
+            // Then here it add the passengers to passenger_details map with a ticket_id as
+            // a key.
+            // where ticket_id is total noof tickets available
             passenger_details.put(totalNoofTickets, p);
+
+            // for every passengers in rac it maintains a queue so here iam adding every rac
+            // passenger to rac queue
             rac_waiting_list.add(totalNoofTickets);
             rac_tickets--;
-        } else if (waiting_tickets > 0) {
+
+            // here if there are no tickets then it adds in a waiting_list
+        } else {
+            // here it create a status of the ticket along with waiting list number.
             p.p_birth = "WL" + "/" + no_of_wl_passengers++;
+            p.p_status = "WL";
+
+            // Then here it add the passengers to passenger_details map with a ticket_id as
+            // a key.
+            // where ticket_id is total noof tickets available
             passenger_details.put(totalNoofTickets, p);
+
+            // for every passengers in waiting list it maintains a queue so here iam adding
+            // every wl passenger to waiting list queue
             waiting_list.add(totalNoofTickets);
             waiting_tickets--;
         }
@@ -68,36 +101,90 @@ public class TicketBook extends ReusedMethods implements BookingServices {
         print(p);
     }
 
+    // this is method used for canceling Tickets
     public void cancelTicket(int id) {
+
+        // First it checks wheather ticket is booked or not with given ticket id.
         if (passenger_details.containsKey(id)) {
-            if (!rac_waiting_list.isEmpty()) {
-                String rac_birth = passenger_details.get(id).p_birth;
-                int rac_id = rac_waiting_list.poll();
-                String wl_birth = passenger_details.get(rac_id).p_birth;
-                Passenger racP = passenger_details.get(rac_id);
-                racP.p_birth = rac_birth;
+
+            // Checks status of ticket if it is general then, Before removing the ticket
+            // from the passenger list it checks wheather any ticket is in rac waiting
+            // queue.
+            if (passenger_details.get(id).p_status.equals("SL")) {
+                if (!rac_waiting_list.isEmpty()) {
+
+                    // if yes it gives the canceled ticket to rac
+                    String rac_birth = passenger_details.get(id).p_birth;
+                    int rac_id = rac_waiting_list.poll();
+
+                    // and then it changes the birth of passenger to general from rac
+                    Passenger racP = passenger_details.get(rac_id);
+                    racP.p_birth = rac_birth;
+                    racP.p_status = "SL";
+
+                    // here it checls weather there is any waiting list queue
+                    if (!waiting_list.isEmpty()) {
+
+                        // if yes then it adds head of the waiting list queue in rac_waiting_list queue
+                        rac_waiting_list.add(waiting_list.poll());
+                        waiting_tickets++;
+
+                        // this is birth correction method where after removing any birth status will be
+                        // corrected using this method
+                        MakeBirthCorrections("WL");
+                    } else
+                        rac_tickets++;
+
+                    MakeBirthCorrections("RAC");
+                } else
+                    available_tickets++;
+
+                // Here it checks weather given passenger_id is in rac then it will remove and
+                // make checks for waiting_list queue if any.
+            } else if (passenger_details.get(id).p_birth.equals("RAC")) {
+                rac_waiting_list.remove(id);
+
+                // if there is any waiting list passengers then it addes them to
+                // rac_waiting_list queue.
                 if (!waiting_list.isEmpty()) {
-                    Passenger WLP = passenger_details.get(waiting_list.poll());
-                    WLP.p_birth = wl_birth;
+                    rac_waiting_list.add(waiting_list.poll());
                     waiting_tickets++;
                 } else
                     rac_tickets++;
-            } else
-                available_tickets++;
+
+                MakeBirthCorrections("RAC");
+
+                // Else given id is an waiting list id then it removes the id from waiting_list
+                // queue.
+            } else {
+                waiting_list.remove(id);
+                MakeBirthCorrections("WL");
+                waiting_tickets++;
+            }
+
+            // At last here it will remove the canceled ticket from the passenger_details
+            // Map.
             passenger_details.remove(id);
             System.out.println("Ticket Cancelled Successfully");
+
         } else {
             System.out.println("Invalid Ticket ID");
         }
     }
 
+    // This method is for printing a particular ticket.
     public void printTicket(int id) {
+
+        // here it checks wheather the given id is booked a ticket if yes it print the
+        // passenger details else prints an error
+
         if (passenger_details.containsKey(id))
             print(passenger_details.get(id));
         else
             System.out.println("Please Enter the Valid Ticket ID");
     }
 
+    // THis method is used for printing all passenger.
     public void printPassengers() {
         if (passenger_details.size() == 0) {
             System.out.println("No details of passengers");
