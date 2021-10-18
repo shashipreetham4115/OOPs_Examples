@@ -2,7 +2,7 @@ package ConsoleApplications.ReservationSystem;
 
 import java.util.*;
 
-public class DB {
+public class DB implements UserServices {
 
     private ArrayList<String> username = new ArrayList<String>();
     private ArrayList<String> password = new ArrayList<String>();
@@ -25,7 +25,7 @@ public class DB {
         fullname.add("Akash B");
     }
 
-    int ValidateUser(String u, String p) {
+    public int ValidateUser(String u, String p) {
         int u_id = username.indexOf(u);
         int p_id = password.indexOf(p);
         if (u_id != -1 && p_id != -1)

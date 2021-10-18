@@ -50,12 +50,12 @@ public class Test {
                     }
                     case 2: {
                         System.out.print("\n Please Enter Ticket ID : ");
-                        book.cancelTicket(sc.nextInt());
+                        book.cancelTicket(sc.nextLong());
                         break;
                     }
                     case 3: {
                         System.out.print("\n Please Enter Ticket ID");
-                        book.printTicket(sc.nextInt());
+                        book.printTicket(sc.nextLong());
                         break;
                     }
                     case 4: {
