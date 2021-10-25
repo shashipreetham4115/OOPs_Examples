@@ -6,4 +6,6 @@ public interface PatientServices {
     abstract void ViewMedicalRecords(String patientId, Map<String, Doctor> doctors);
 
     abstract void BookAppointment(Map<String, Doctor> doctors, String patientId);
+
+    abstract void ViewDonors();
 }

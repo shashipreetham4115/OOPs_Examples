@@ -28,7 +28,16 @@ public class ServicesForDoctor extends ServicesForPatient implements DoctorServi
         System.out.println("Please Give Healthcare Suggestions\n");
         String suggestions = scanner.next();
 
-        MedicalReport mr = new MedicalReport(date, reason, status, diagnosis, suggestions, dID);
+        System.out.println("Is any donor helped if yes please enter donor id else enter -1 : ");
+
+        String donorId = scanner.next();
+
+        if (donorId.charAt(0) == 'g') {
+            if (donors_db.containsKey(donorId)) {
+                donors_db.get(donorId).status = "Donated";
+            }
+        }
+        MedicalReport mr = new MedicalReport(date, reason, status, diagnosis, suggestions, dID, donorId);
 
         if (!medicalReports_db.containsKey(pID)) {
             medicalReports_db.put(pID, new ArrayList<MedicalReport>());

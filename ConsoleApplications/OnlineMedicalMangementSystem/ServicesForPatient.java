@@ -4,7 +4,8 @@ import java.util.*;
 
 public class ServicesForPatient {
 
-    static Map<String, ArrayList<MedicalReport>> medicalReports_db = new HashMap<String, ArrayList<MedicalReport>>();
+    Map<String, ArrayList<MedicalReport>> medicalReports_db = new HashMap<String, ArrayList<MedicalReport>>();
+    Map<String, Donor> donors_db = new HashMap<String, Donor>();
 
     public void BookAppointment(Map<String, Doctor> doctors, String patientId) {
 
@@ -68,6 +69,31 @@ public class ServicesForPatient {
             }
         } else {
             System.out.println("\nNo Record Found");
+        }
+    }
+
+    public void ViewDonors() {
+        int i = 0;
+        if (!donors_db.isEmpty()) {
+            for (Donor god : donors_db.values()) {
+                System.out.println("\n -----------------------------------------------------------------------\n");
+
+                System.out.println(++i + ")");
+                System.out.println("Donor ID              : " + god.id);
+                System.out.println("Name                  : " + god.name);
+                System.out.println("Age                   : " + god.age);
+                System.out.println("Gender                : " + god.gender);
+                System.out.println("Blood Group           : " + god.bg);
+                System.out.println("Donating              : " + god.organ);
+                System.out.println("Health Issues         : " + god.issues);
+                System.out.println(god.phc ? "Physically Handicaped : Yes" : "Physically Handicaped : No");
+                System.out.println("Phone Number          : " + god.number);
+                System.out.println("Status                : " + god.status);
+
+                System.out.println("\n -----------------------------------------------------------------------\n");
+            }
+        } else {
+            System.out.println("\nNo Donor's Found");
         }
     }
 }
