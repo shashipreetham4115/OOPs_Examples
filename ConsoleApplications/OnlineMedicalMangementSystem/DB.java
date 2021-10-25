@@ -40,14 +40,13 @@ public class DB extends Thread implements UserServices {
     public int ValidateUser(String u, String p, boolean isPatient) {
 
         int u_id = username.indexOf(u);
-        boolean p_id = password.get(u_id).equals(p);
 
         System.out.println(u_id != -1);
-        System.out.println(p_id);
-        System.out.println(id_db.get(u_id).charAt(0) == 'p' && isPatient);
-        System.out.println(id_db.get(u_id).charAt(0) == 'd' && !isPatient);
+
         if (u_id != -1) {
-            if (p_id) {
+            System.out.println(id_db.get(u_id).charAt(0) == 'p' && isPatient);
+            System.out.println(id_db.get(u_id).charAt(0) == 'd' && !isPatient);
+            if (password.get(u_id).equals(p)) {
                 if ((id_db.get(u_id).charAt(0) == 'p' && isPatient)
                         || (id_db.get(u_id).charAt(0) == 'd' && !isPatient)) {
                     return u_id;
@@ -90,7 +89,7 @@ public class DB extends Thread implements UserServices {
             un = sc.next();
             if (username.indexOf(un) == -1)
                 break;
-            System.out.print("\nUsername not available ,\tPlease Enter other Username.\n");
+            System.out.println("\nUsername already taken ,Please Enter other Username.\n");
         }
         System.out.print("Please Enter Password            : ");
         String pw = sc.next();
