@@ -40,14 +40,14 @@ public class DB extends Thread implements UserServices {
     public int ValidateUser(String u, String p, boolean isPatient) {
 
         int u_id = username.indexOf(u);
-        int p_id = password.indexOf(p);
+        boolean p_id = password.get(u_id).equals(p);
 
-        System.out.println(u_id != -1 && p_id != -1);
-        System.out.println(u_id == p_id);
+        System.out.println(u_id != -1);
+        System.out.println(p_id);
         System.out.println(id_db.get(u_id).charAt(0) == 'p' && isPatient);
         System.out.println(id_db.get(u_id).charAt(0) == 'd' && !isPatient);
-        if (u_id != -1 && p_id != -1) {
-            if (u_id == p_id) {
+        if (u_id != -1) {
+            if (p_id) {
                 if ((id_db.get(u_id).charAt(0) == 'p' && isPatient)
                         || (id_db.get(u_id).charAt(0) == 'd' && !isPatient)) {
                     return u_id;
@@ -84,8 +84,14 @@ public class DB extends Thread implements UserServices {
         String gender = sc.next();
         System.out.print("Please Enter Your Mobile Number  : ");
         long number = sc.nextLong();
-        System.out.print("Please Enter Username            : ");
-        String un = sc.next();
+        String un;
+        while (true) {
+            System.out.print("Please Enter Username            : ");
+            un = sc.next();
+            if (username.indexOf(un) == -1)
+                break;
+            System.out.print("\nUsername not available ,\tPlease Enter other Username.\n");
+        }
         System.out.print("Please Enter Password            : ");
         String pw = sc.next();
         Patient p = new Patient(name, age, bloodGroup, gender, number);
@@ -105,8 +111,14 @@ public class DB extends Thread implements UserServices {
         String spe = sc.next();
         System.out.print("Please Enter Gender         : ");
         String gender = sc.next();
-        System.out.print("Please Enter Username       : ");
-        String un = sc.next();
+        String un;
+        while (true) {
+            System.out.print("Please Enter Username            : ");
+            un = sc.next();
+            if (username.indexOf(un) == -1)
+                break;
+            System.out.print("\nUsername not available ,\tPlease Enter other Username.\n");
+        }
         System.out.print("Please Enter Password       : ");
         String pw = sc.next();
         Doctor d = new Doctor(name, exp, spe, gender);
