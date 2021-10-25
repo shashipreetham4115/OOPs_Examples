@@ -52,6 +52,7 @@ public class ServicesForDoctor extends ServicesForPatient implements DoctorServi
 
                 System.out.println("\n Patient Details and Slot\n");
 
+                System.out.println("Patietn ID    : " + p.id);
                 System.out.println("Name          : " + p.name);
                 System.out.println("Age           : " + p.age);
                 System.out.println("Gender        : " + p.gender);
