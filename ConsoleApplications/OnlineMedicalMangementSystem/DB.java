@@ -13,25 +13,32 @@ public class DB extends Thread implements UserServices {
     Scanner sc = new Scanner(System.in);
 
     public DB() throws InterruptedException {
-        username.add("shashi");
-        username.add("mahesh");
-        username.add("ajith");
 
-        password.add("4501");
-        password.add("4483");
-        password.add("4000");
-
-        Doctor d1 = new Doctor("Dr.Shashi", 8, "General Physician", "Male");
+        Doctor d1 = new Doctor("Dr.Shashipreetham Reddy", 8, "General Physician", "Male");
         id_db.add(d1.id);
+        username.add("shashi");
+        password.add("4501");
         Thread.sleep(1);
         doctor_db.put(d1.id, d1);
-        Doctor d2 = new Doctor("Dr.Mahesh", 13, "Gasstroenterologist", "Male");
+
+        Doctor d2 = new Doctor("Dr.Mahesh Kancherla", 13, "Gasstroenterologist", "Male");
         id_db.add(d2.id);
+        username.add("mahesh");
+        password.add("4483");
         Thread.sleep(1);
         doctor_db.put(d2.id, d2);
 
-        Patient p1 = new Patient("Ajith", 21, "O-", "M", 8756575843l);
+        Doctor d3 = new Doctor("Dr.Balaji Royal", 15, "Neurologists", "Male");
+        id_db.add(d3.id);
+        username.add("balaji");
+        password.add("4500");
+        Thread.sleep(1);
+        doctor_db.put(d3.id, d3);
+
+        Patient p1 = new Patient("Ajith Madhan", 21, "O-", "M", 8756575843l);
         id_db.add(p1.id);
+        username.add("ajith");
+        password.add("4000");
         Thread.sleep(1);
         patient_db.put(p1.id, p1);
 
