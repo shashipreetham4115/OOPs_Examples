@@ -2,6 +2,9 @@ package ConsoleApplications.OnlineMedicalMangementSystem;
 
 import java.util.*;
 
+import ConsoleApplications.OnlineMedicalMangementSystem.HelperClasses.Doctor;
+import ConsoleApplications.OnlineMedicalMangementSystem.HelperClasses.Donor;
+
 public class Test {
 
     public static void main(String[] args) throws InterruptedException {

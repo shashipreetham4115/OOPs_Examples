@@ -4,7 +4,7 @@ public class Donor extends PatientDetails {
     public String organ, issues, status;
     public boolean phc;
 
-    Donor(String name, int age, String gender, String bg, String organ, String issues, boolean phc, long number,
+    public Donor(String name, int age, String gender, String bg, String organ, String issues, boolean phc, long number,
             String status) {
         this.name = name;
         this.gender = gender;

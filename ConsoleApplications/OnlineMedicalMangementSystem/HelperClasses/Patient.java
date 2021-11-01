@@ -1,8 +1,8 @@
-package ConsoleApplications.OnlineMedicalMangementSystem;
+package ConsoleApplications.OnlineMedicalMangementSystem.HelperClasses;
 
 public class Patient extends PatientDetails {
 
-    Patient(String name, int age, String bloodGroup, String gender, long number) {
+    public Patient(String name, int age, String bloodGroup, String gender, long number) {
         this.name = name;
         this.age = age;
         this.gender = gender;

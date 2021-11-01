@@ -1,14 +1,14 @@
-package ConsoleApplications.OnlineMedicalMangementSystem;
+package ConsoleApplications.OnlineMedicalMangementSystem.HelperClasses;
 
 import java.util.*;
 
 public class Doctor extends Human {
-    String specialization;
-    int experience;
+    public String specialization;
+    public int experience;
 
-    Map<String, String> slots = new HashMap<String, String>();
+    public Map<String, String> slots = new HashMap<String, String>();
 
-    Doctor(String name, int experience, String specialization, String gender) {
+    public Doctor(String name, int experience, String specialization, String gender) {
         this.name = name;
         this.experience = experience;
         this.specialization = specialization;

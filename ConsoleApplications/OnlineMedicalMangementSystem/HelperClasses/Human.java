@@ -1,5 +1,6 @@
-package ConsoleApplications.OnlineMedicalMangementSystem;
+package ConsoleApplications.OnlineMedicalMangementSystem.HelperClasses;
 
 public class Human extends Id {
-    String name, gender;
+    public String name;
+    public String gender;
 }

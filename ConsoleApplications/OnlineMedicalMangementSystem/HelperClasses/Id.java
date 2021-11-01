@@ -1,8 +1,8 @@
-package ConsoleApplications.OnlineMedicalMangementSystem;
+package ConsoleApplications.OnlineMedicalMangementSystem.HelperClasses;
 
 import java.util.Date;
 
 public class Id {
-    String id;
+    public String id;
     Date d = new Date();
 }
