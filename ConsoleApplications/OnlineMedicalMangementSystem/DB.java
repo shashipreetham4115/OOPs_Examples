@@ -47,12 +47,7 @@ public class DB extends Thread implements UserServices {
     public int ValidateUser(String u, String p, boolean isPatient) {
 
         int u_id = username.indexOf(u);
-
-        System.out.println(u_id != -1);
-
         if (u_id != -1) {
-            System.out.println(id_db.get(u_id).charAt(0) == 'p' && isPatient);
-            System.out.println(id_db.get(u_id).charAt(0) == 'd' && !isPatient);
             if (password.get(u_id).equals(p)) {
                 if ((id_db.get(u_id).charAt(0) == 'p' && isPatient)
                         || (id_db.get(u_id).charAt(0) == 'd' && !isPatient)) {

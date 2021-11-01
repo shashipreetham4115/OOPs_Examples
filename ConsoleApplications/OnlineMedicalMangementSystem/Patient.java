@@ -1,14 +1,6 @@
 package ConsoleApplications.OnlineMedicalMangementSystem;
 
-import java.util.Date;
-
-public class Patient {
-    String name, gender, bloodGroup;
-    int age;
-    String id;
-    long number;
-
-    Date d = new Date();
+public class Patient extends PatientDetails {
 
     Patient(String name, int age, String bloodGroup, String gender, long number) {
         this.name = name;
@@ -18,4 +10,5 @@ public class Patient {
         this.number = number;
         this.id = "p" + d.getTime();
     }
+
 }

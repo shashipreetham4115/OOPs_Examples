@@ -1,10 +1,7 @@
 package ConsoleApplications.OnlineMedicalMangementSystem;
 
-import java.util.Date;
-
-public class MedicalReport {
-    String date, reason, doctorId, id, status, diagnosis, suggestions, donorId;
-    Date d = new Date();
+public class MedicalReport extends Id {
+    String date, reason, doctorId, status, diagnosis, suggestions, donorId;
 
     MedicalReport(String date, String reason, String status, String diagnosis, String suggestions, String doctorId,
             String donorId) {

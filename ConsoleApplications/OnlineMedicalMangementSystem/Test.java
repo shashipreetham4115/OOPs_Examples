@@ -54,7 +54,7 @@ public class Test {
                     System.out.println("Name                  : " + god.name);
                     System.out.println("Age                   : " + god.age);
                     System.out.println("Gender                : " + god.gender);
-                    System.out.println("Blood Group           : " + god.bg);
+                    System.out.println("Blood Group           : " + god.bloodGroup);
                     System.out.println("Donating              : " + god.organ);
                     System.out.println("Health Issues         : " + god.issues);
                     System.out.println(god.phc ? "Physically Handicaped : Yes" : "Physically Handicaped : No");

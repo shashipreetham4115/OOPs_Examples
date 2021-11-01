@@ -10,24 +10,34 @@ public class ServicesForDoctor extends ServicesForPatient implements DoctorServi
         System.out.println("\n----------------------------------------------");
         System.out.println("---------Adding Medical Prescription----------\n");
 
-        System.out.println("Please Enter Patient ID        : ");
+        System.out.print("Please Enter Patient ID        : ");
         String pID = scanner.next();
 
-        System.out.println("Please Enter Date              : ");
+        System.out.print("Please Enter Date              : ");
         String date = scanner.next();
 
-        System.out.println("Please Enter Health Issue      : ");
+        System.out.print("Please Enter Health Issue      : ");
         String reason = scanner.next();
 
-        System.out.println("Please Enter Status of Patient : ");
+        System.out.print("Please Enter Status of Patient : ");
         String status = scanner.next();
 
-        System.out.println("Please Give E-Prescription\n");
-        String diagnosis = scanner.next();
-
-        System.out.println("Please Give Healthcare Suggestions\n");
-        String suggestions = scanner.next();
-
+        System.out.println("Please Give E-Prescription : ");
+        String diagnosis = "";
+        while (scanner.hasNext()) {
+            String temp = scanner.nextLine();
+            if (temp.equals("--q"))
+                break;
+            diagnosis = diagnosis + "\n" + temp;
+        }
+        System.out.println("Please Give Healthcare Suggestions : ");
+        String suggestions = "";
+        while (scanner.hasNext()) {
+            String temp = scanner.nextLine();
+            if (temp.equals("--q"))
+                break;
+            suggestions = suggestions + "\n" + temp;
+        }
         System.out.println("Is any donor helped if yes please enter donor id else enter -1 : ");
 
         String donorId = scanner.next();

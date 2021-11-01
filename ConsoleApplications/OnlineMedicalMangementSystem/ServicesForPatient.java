@@ -21,30 +21,34 @@ public class ServicesForPatient {
         System.out.print("\n Please Enter Prefered Doctor ID : ");
         String doctorId = scanner.next();
         System.out.println("\n---------------------------------");
-        Doctor d = doctors.get(doctorId);
-        int i = 0;
-        ArrayList<String> preSlot = new ArrayList<String>();
-        preSlot.add("Hello");
-        for (String slot : d.slots.keySet()) {
-            if (d.slots.get(slot).equals("")) {
-                System.out.println(++i + ". " + slot);
-                preSlot.add(slot);
+        if (doctors.containsKey(doctorId)) {
+            Doctor d = doctors.get(doctorId);
+            int i = 0;
+            ArrayList<String> preSlot = new ArrayList<String>();
+            preSlot.add("Hello");
+            for (String slot : d.slots.keySet()) {
+                if (d.slots.get(slot).equals("")) {
+                    System.out.println(++i + ". " + slot);
+                    preSlot.add(slot);
+                }
             }
-        }
-        if (i > 0) {
-            System.out.print("Please Choose Prefered Slot : ");
-            int ps = scanner.nextInt();
-            d.slots.put(preSlot.get(ps), patientId);
-            System.out.println("Appointment Booked Successfully");
-            System.out.println("\nAppointment Details");
-            System.out.println("---------------------------------");
-            System.out.println("\nDoctor Name      : " + d.name);
-            System.out.println("Specialization   : " + d.specialization);
-            System.out.println("Experience       : " + d.experience + " Years");
-            System.out.println("Appointment Time : " + preSlot.get(ps));
-            System.out.println("\n---------------------------------");
+            if (i > 0) {
+                System.out.print("Please Choose Prefered Slot : ");
+                int ps = scanner.nextInt();
+                d.slots.put(preSlot.get(ps), patientId);
+                System.out.println("Appointment Booked Successfully");
+                System.out.println("\nAppointment Details");
+                System.out.println("---------------------------------");
+                System.out.println("\nDoctor Name      : " + d.name);
+                System.out.println("Specialization   : " + d.specialization);
+                System.out.println("Experience       : " + d.experience + " Years");
+                System.out.println("Appointment Time : " + preSlot.get(ps));
+                System.out.println("\n---------------------------------");
+            } else {
+                System.out.println("All Slots are Filled");
+            }
         } else {
-            System.out.println("All Slots are Filled");
+            System.out.println("\n Please Enter Valid Doctor ID");
         }
     }
 
@@ -83,7 +87,7 @@ public class ServicesForPatient {
                 System.out.println("Name                  : " + god.name);
                 System.out.println("Age                   : " + god.age);
                 System.out.println("Gender                : " + god.gender);
-                System.out.println("Blood Group           : " + god.bg);
+                System.out.println("Blood Group           : " + god.bloodGroup);
                 System.out.println("Donating              : " + god.organ);
                 System.out.println("Health Issues         : " + god.issues);
                 System.out.println(god.phc ? "Physically Handicaped : Yes" : "Physically Handicaped : No");

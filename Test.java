@@ -17,9 +17,10 @@ class Test {
 
         System.out.println();
 
-        Polymorphism po = new Polymorphism();
+        SuperClass po = new Polymorphism();
         po.method();
-        System.out.println(po.getWallet());
+        Polymorphism p = new Polymorphism();
+        System.out.println(p.getWallet());
 
         System.out.println();
 

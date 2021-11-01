@@ -2,11 +2,10 @@ package ConsoleApplications.OnlineMedicalMangementSystem;
 
 import java.util.*;
 
-public class Doctor {
-    String name, specialization, gender;
+public class Doctor extends Human {
+    String specialization;
     int experience;
-    String id;
-    Date d = new Date();
+
     Map<String, String> slots = new HashMap<String, String>();
 
     Doctor(String name, int experience, String specialization, String gender) {
@@ -14,7 +13,7 @@ public class Doctor {
         this.experience = experience;
         this.specialization = specialization;
         this.gender = gender;
-        this.id = "d" + d.getTime();
+        this.id = "d";
 
         slots.put("9:00 AM", "");
         slots.put("10:00 AM", "");
