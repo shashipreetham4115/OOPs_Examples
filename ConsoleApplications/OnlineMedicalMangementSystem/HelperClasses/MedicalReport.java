@@ -1,7 +1,7 @@
-package ConsoleApplications.OnlineMedicalMangementSystem;
+package ConsoleApplications.OnlineMedicalMangementSystem.HelperClasses;
 
 public class MedicalReport extends Id {
-    String date, reason, doctorId, status, diagnosis, suggestions, donorId;
+    public String date, reason, doctorId, status, diagnosis, suggestions, donorId;
 
     MedicalReport(String date, String reason, String status, String diagnosis, String suggestions, String doctorId,
             String donorId) {

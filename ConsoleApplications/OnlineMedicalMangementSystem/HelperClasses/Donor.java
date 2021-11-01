@@ -1,8 +1,8 @@
-package ConsoleApplications.OnlineMedicalMangementSystem;
+package ConsoleApplications.OnlineMedicalMangementSystem.HelperClasses;
 
 public class Donor extends PatientDetails {
-    String organ, issues, status;
-    boolean phc;
+    public String organ, issues, status;
+    public boolean phc;
 
     Donor(String name, int age, String gender, String bg, String organ, String issues, boolean phc, long number,
             String status) {

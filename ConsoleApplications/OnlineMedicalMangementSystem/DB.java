@@ -2,6 +2,9 @@ package ConsoleApplications.OnlineMedicalMangementSystem;
 
 import java.util.*;
 
+import ConsoleApplications.OnlineMedicalMangementSystem.HelperClasses.Doctor;
+import ConsoleApplications.OnlineMedicalMangementSystem.HelperClasses.Patient;
+
 public class DB extends Thread implements UserServices {
 
     private ArrayList<String> username = new ArrayList<String>();
